@@ -1,0 +1,38 @@
+﻿@model List<Crud_MVC.Models.Domain.Student>
+@{
+}
+
+<h1>Students</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>Id</th>*@
+            <th>Name-Surname</th>
+            <th>Email</th>
+            <th>StudentId</th>
+            <th>Date Of Birth</th>
+            <th>Department</th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                @*<td>*****</td>*@
+                <td>@student.Name</td>
+                <td>
+                    @{
+                        var email = "mailto:" + student.Email;
+                    }
+                    <a href="@email">@student.Email</a>
+                </td>
+                <td>@student.StudentId</td>
+                <td>@student.DateOfBirth.ToString("dd-MM-yyyy")</td>
+                <td>@student.Department</td>
+                <td><a href="Students/View/@student.Id">View</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
